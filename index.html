@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Upload</title>
+</head>
+<body>
+<input type="file" accept="video/*" id="videoInput">
+<button onclick="uploadVideo()">Upload Video</button>
+<hr>
+<video controls id="uploadedVideo" style="display: none;"></video>
+
+<script>
+function uploadVideo() {
+const videoInput = document.getElementById('videoInput');
+const uploadedVideo = document.getElementById('uploadedVideo');
+
+if (videoInput.files && videoInput.files[0]) {
+const file = videoInput.files[0];
+const objectURL = URL.createObjectURL(file);
+
+uploadedVideo.src = objectURL;
+uploadedVideo.style.display = 'block';
+} else {
+alert('Please select a video file.');
+}
+}
+</script>
+</body>
+</html>
